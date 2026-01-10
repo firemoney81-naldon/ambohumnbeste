@@ -1,23 +1,717 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+
+    <!-- Schema.org JSON-LD for Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "60세 암보험 - 2026년 맞춤 설계 전략 및 보험료 비교 가이드",
+        "author": {
+            "@type": "Person",
+            "name": "60세암보험 전문가 그룹"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "60세암보험 정보센터",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://example.com/logo.png"
+            }
+        },
+        "datePublished": "2026-01-10",
+        "dateModified": "2026-01-10",
+        "image": "https://example.com/sonata_insurance_image.png"
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD for FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "60세가 넘으면 암보험료가 비싼 이유가 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "60대는 암 발병률이 급격히 높아지는 연령대로, 보험사의 위험률 통계에 따라 보험료가 산정됩니다. 나이가 많을수록 암 발생 확률이 높아지기 때문에 보험료가 비싸지는 것이 일반적입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "60세 부모님을 위한 암보험은 비갱신형이 좋을까요, 갱신형이 좋을까요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "갱신형 암보험은 초기 보험료가 저렴하지만, 갱신 시점마다 보험료가 인상됩니다. 반면 비갱신형은 초기 보험료가 높지만, 납입 기간 동안 보험료 변동이 없어 장기적인 총 납입액을 예측하기 쉽습니다. 60세 가입자는 갱신형의 초기 부담이 적을 수 있지만, 갱신 후 보험료 인상 폭을 고려하여 신중하게 선택해야 합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "고혈압이나 당뇨병이 있어도 60세 암보험 가입이 가능한가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, 고혈압이나 당뇨 등 만성 질환이 있는 유병자(질병 이력자)를 위한 '간편심사 암보험' 상품들이 존재합니다. 일반 심사 상품에 비해 보험료는 다소 높지만, 주요 고지 항목(최근 3개월 이내 입원/수술/추가 검사 여부, 최근 2년 이내 입원/수술 여부, 최근 5년 이내 암 진단 여부 등)만 충족하면 가입할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "암보험 가입 후 보장이 시작되는 시점은 언제인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "대부분의 암보험은 계약일로부터 90일간의 '면책기간'이 있습니다. 이 기간 내에 암이 발생하면 보험금을 지급받을 수 없습니다. 또한, 1~2년의 '감액기간'이 있어 이 기간 내에 암 진단 시 진단비의 50%만 지급될 수 있으므로, 약관을 반드시 확인해야 합니다."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* 폰트 로드는 head의 link 태그로 분리하고, 나머지 스타일은 여기에 적용 */
+
+        /* 🌟 부드럽고 다채로운 색상 팔레트 적용 🌟 */
+        :root {
+            --primary-color: #007bff; /* 메인 블루 */
+            --secondary-color: #28a745; /* 강조 그린 */
+            --tertiary-color: #6c757d; /* 보조 그레이 */
+            --bg-light: #f8f9fa; /* 밝은 배경 */
+            --bg-white: #ffffff; /* 흰색 배경 */
+            --text-dark: #212529; /* 어두운 텍스트 */
+            --text-light: #e9ecef; /* 밝은 텍스트 */
+            --border-color: #dee2e6; /* 경계선 색상 */
+            --form-bg: #e9f5ff; /* 폼 배경색 */
+            --shadow: 0 4px 12px rgba(0,0,0,0.08); /* 그림자 효과 */
+            --cta-color: #ffc107; /* CTA 버튼 옐로우 */
+        }
+
+        /* 기본 레이아웃 및 폰트 설정 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0; padding: 0;
+            line-height: 1.8; /* 가독성을 위한 줄 간격 확대 */
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+
+        /* 콘텐츠 컨테이너 */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* 헤더 섹션 */
+        header {
+            background-color: var(--bg-white);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--primary-color);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 2.5rem; /* 제목 크기 키움 */
+            color: var(--primary-color);
+            margin: 0 0 10px;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: var(--tertiary-color);
+        }
+
+        /* 내비게이션 바 */
+        nav {
+            background-color: var(--primary-color);
+            text-align: center;
+            padding: 15px 0;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        nav a {
+            color: var(--bg-white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-bottom: 2px solid var(--cta-color);
+        }
+
+        /* 메인 콘텐츠 영역 */
+        main {
+            padding-bottom: 50px;
+        }
+        section {
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        section h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        section h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 30px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* 강조 박스 스타일 */
+        .highlight-box {
+            background-color: var(--form-bg);
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .highlight-box strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* CTA 버튼 스타일 */
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        }
+        .cta-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* 견적 계산기 폼 스타일 */
+        .calculator-form {
+            background-color: var(--form-bg);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 700px;
+            margin: 30px auto;
+        }
+        .calculator-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .calculator-form input[type="text"],
+        .calculator-form input[type="number"],
+        .calculator-form select {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .calculator-form input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .calculator-form button {
+            background-color: var(--secondary-color);
+            color: var(--bg-white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .calculator-form button:hover {
+            background-color: #218838;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .form-row > div {
+            flex-grow: 1;
+        }
+
+        /* FAQ 스타일 */
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+        .faq-question {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-question::after {
+            content: "-";
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            padding-top: 10px;
+            color: var(--text-dark);
+            font-size: 1rem;
+            display: none;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* 표 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+            font-weight: 500;
+        }
+        td {
+            background-color: var(--bg-white);
+        }
+        .table-caption {
+            font-size: 0.9rem;
+            color: var(--tertiary-color);
+            margin-bottom: 10px;
+        }
+
+        /* 연관 키워드 리스트 스타일 */
+        .keyword-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .keyword-list li {
+            background-color: var(--secondary-color);
+            color: var(--bg-white);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* 외부 링크 섹션 */
+        .external-links ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .external-links li a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .external-links li a:hover {
+            text-decoration: underline;
+        }
+
+        /* 푸터 섹션 */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: var(--text-light);
+            text-decoration: underline;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>60세 암보험 - 2026년 맞춤 설계 전략 및 보험료 비교 가이드</h1>
+            <p>60세 이상 고령자를 위한 최적의 암보험, 유병자도 가입 가능한 간편심사 보험료 비교부터 핵심 보장 분석까지</p>
+            <a href="#quote-form" class="cta-btn">내 보험료 무료 견적 받기</a>
+        </div>
+    </header>
+
+    <nav class="container">
+        <a href="#key-factors">핵심 가입 요소</a>
+        <a href="#renewal-comparison">갱신형 vs 비갱신형</a>
+        <a href="#simplified-underwriting">유병자 간편심사</a>
+        <a href="#coverage-guide">보장 내용 분석</a>
+        <a href="#cost-saving-tips">보험료 절약 팁</a>
+        <a href="#2026-outlook">2026년 시장 전망</a>
+        <a href="#faq">FAQ</a>
     </nav>
-    <main>
-      <h1>Home page</h1>
+
+    <main class="container">
+
+        <!-- 섹션 1: 60세 암보험 가입의 필요성과 핵심 고려 사항 -->
+        <section id="key-factors">
+            <h2>60세 암보험, 지금 가입해야 하는 이유와 핵심 고려 사항</h2>
+            <p><strong>60세 이상 고령자</strong>에게 암보험은 선택이 아닌 필수입니다. 통계청 자료에 따르면, 60대 이후부터 암 발생률이 급격하게 증가하며, 고령화 사회가 심화되면서 암 치료 기간 역시 길어지는 추세입니다. 특히 최근에는 고가의 비급여 치료(표적 항암 약물 치료, 중입자 치료 등)가 보편화되면서 <strong>암 치료비용</strong>이 상상을 초월하는 수준에 달하고 있습니다.</p>
+            <p>이러한 상황에서 60대에 접어든 부모님이나 본인을 위한 <strong>60세 암보험</strong>은 고액의 치료비로 인한 가계 경제 파탄을 막아줄 든든한 방패 역할을 합니다. 그러나 나이가 많거나 과거 병력(고혈압, 당뇨 등)이 있으면 보험 가입이 거절되거나 보험료가 높아질까 우려하는 분들이 많습니다.</p>
+            <p>하지만 2026년 현재는 <strong>유병자 간편심사 암보험</strong> 상품이 다양하게 출시되어, 과거 병력이 있어도 가입할 수 있는 길이 넓어졌습니다. 핵심은 '어떤 상품을 선택하느냐'입니다. 60세 암보험 가입 시 반드시 고려해야 할 핵심 요소들을 자세히 살펴보겠습니다.</p>
+
+            <h3>1. 가입 시점의 중요성: 면책기간과 감액기간</h3>
+            <p>대부분의 암보험은 계약일로부터 <strong>90일간의 면책기간</strong>이 존재합니다. 이 기간 내에 암 진단을 받으면 보험금을 지급받을 수 없습니다. 또한, 1~2년간 <strong>진단비 감액기간</strong>이 적용되어, 이 기간 내에 암 진단을 받으면 보험금의 50%만 지급하는 상품이 많습니다. 따라서 건강할 때 미리 가입하여 충분한 보장 개시 시점을 확보하는 것이 중요합니다. 특히 60대는 면역력이 약해지는 시기이므로, 가입을 미루다가 면책기간의 손해를 볼 수 있습니다.</p>
+
+            <h3>2. 갱신형 vs 비갱신형 선택의 딜레마</h3>
+            <p>60세 암보험을 고민할 때 가장 중요한 결정 중 하나는 <strong>갱신형(갱신형 암보험)</strong>과 <strong>비갱신형(비갱신 암보험)</strong> 중 어떤 것을 선택할지입니다.</p>
+            <ul>
+                <li><strong>비갱신형 (비갱신 암보험):</strong> 초기 보험료가 다소 비싸지만, 납입 기간(예: 20년) 동안 보험료 변동이 없습니다. 60세 가입자가 20년 납입을 하면 80세까지 동일한 보험료를 내고, 100세까지 보장받을 수 있습니다. 총 납입액을 미리 예측할 수 있어 장기적인 재정 계획에 유리합니다.</li>
+                <li><strong>갱신형 (갱신형 암보험):</strong> 초기 보험료는 비갱신형보다 저렴합니다. 그러나 갱신 주기(예: 5년, 10년, 20년)마다 보험료가 인상됩니다. 60세에 가입하면 70세, 80세에 갱신될 때마다 보험료 인상 폭이 커질 수 있어, 총 납입액이 비갱신형보다 많아질 수 있습니다.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>[60세 암보험 가입 팁]</strong> 60세 가입자는 갱신형을 선택할 경우 갱신 주기와 갱신 시점의 예상 보험료를 꼼꼼히 확인해야 합니다. 만약 갱신 주기가 길고(예: 20년), 100세 만기 시점까지의 총 납입액을 비교했을 때 비갱신형이 합리적이라면 비갱신형을 선택하는 것이 유리할 수 있습니다.
+            </div>
+
+            <p><strong>[참고] 2026년 보험 시장 동향과 갱신형/비갱신형</strong><br>2026년 보험 시장에서는 보장성 보험의 성장이 예상되며, 특히 고령화 가속으로 건강보험과 암보험 수요가 증가하고 있습니다. 일부 전문가들은 60대 이상 가입 시 갱신형이 초기 부담이 적어 유리할 수 있다고 보지만, 장기적인 관점에서는 비갱신형이 총 납입액 측면에서 더 유리한 경우가 많습니다.</p>
+        </section>
+
+        <!-- 섹션 2: 60세 암보험료 산정 기준과 유병자 간편심사 분석 -->
+        <section id="simplified-underwriting">
+            <h2>60세 암보험료 절약 전략: 유병자 간편심사 완벽 분석</h2>
+            <p><strong>60세 이상 고령자</strong>가 암보험을 가입할 때 가장 큰 장벽은 <strong>보험료</strong>와 <strong>유병력자 심사</strong>입니다. 60대는 이미 만성 질환(고혈압, 당뇨)을 앓고 있거나 과거 수술 이력이 있는 경우가 많아 일반적인 표준형 상품 가입이 어려울 수 있습니다.</p>
+            <p>이러한 분들을 위해 <strong>간편심사 암보험 (유병자 암보험)</strong> 상품이 대안으로 떠오르고 있습니다. 간편심사는 일반 심사와 달리 몇 가지 핵심 고지 항목만 통과하면 가입이 가능하며, 60대에게 매우 적합한 상품입니다.</p>
+
+            <h3>1. 간편심사 vs 일반 심사: 어떤 상품을 선택해야 할까?</h3>
+            <p><strong>일반 심사 (표준형)</strong><br>건강 상태가 양호한 가입자를 대상으로 합니다. 보험료가 저렴하고 보장 범위가 넓은 편이지만, 60세 고령자의 경우 심사 기준을 통과하기 어렵습니다. 60대 중에서도 병력 없이 건강한 분들에게 적합합니다.</p>
+
+            <p><strong>간편 심사 (유병자형)</strong><br>만성 질환이나 경미한 병력이 있는 분들을 대상으로 합니다. 보험료는 일반 심사보다 10~20% 높을 수 있지만, 가입 절차가 간편합니다. 고지 항목을 충족하지 못하면 가입이 거절될 수 있지만, 60대 유병자에게는 현실적인 선택지입니다.</p>
+
+            <h3>2. 간편심사 고지 항목 (3.2.5, 3.3.5, 3.5.5 고지)</h3>
+            <p>간편심사 보험은 각 상품마다 고지해야 할 항목이 다릅니다. 흔히 <strong>3.2.5, 3.3.5, 3.5.5</strong> 등으로 구분됩니다. 이 숫자는 고지해야 하는 기간(년)을 의미합니다.</p>
+            <ul>
+                <li><strong>3.2.5 고지:</strong> 최근 3개월 이내 입원/수술/추가 검사 여부, 최근 2년 이내 입원/수술 여부, 최근 5년 이내 암 진단 여부.</li>
+                <li><strong>3.3.5 고지:</strong> 최근 3개월 이내 입원/수술/추가 검사 여부, 최근 3년 이내 입원/수술 여부, 최근 5년 이내 암 진단 여부. (가장 일반적인 형태)</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>[60세 암보험 유병자 가입 팁]</strong> 보험사는 유병자 상품을 통해 <strong>만성질환자</strong>(고혈압, 당뇨)의 가입 문턱을 낮추고 있습니다. 그러나 5년 이내 암 진단 이력이 있다면 가입이 어려울 수 있습니다. 특히 60대는 기존 질병 이력이 많을 수 있으므로, 여러 보험사의 간편심사 상품을 비교하여 가장 유리한 조건을 찾아야 합니다.
+            </div>
+
+            <p><strong>[참고] 보험료 산정 예시 (60세 남성 기준)</strong></p>
+            <table class="table-caption">
+                <caption>[표] 60세 남성 암보험료 비교 (비갱신형 vs. 갱신형/표준형 vs. 간편심사)</caption>
+                <thead>
+                    <tr>
+                        <th>가입 유형</th>
+                        <th>특징</th>
+                        <th>월 보험료 (예시)</th>
+                        <th>총 납입액 (20년납 100세만기 기준)</th>
+                        <th>적합 대상</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>비갱신형 (표준형)</strong></td>
+                        <td>보험료 변동 없음, 건강 심사 까다로움</td>
+                        <td>10~15만원대</td>
+                        <td>약 2,400~3,600만원</td>
+                        <td>60대 중 건강한 분</td>
+                    </tr>
+                    <tr>
+                        <td><strong>갱신형 (표준형)</strong></td>
+                        <td>초기 보험료 저렴, 갱신 시 인상 가능</td>
+                        <td>7~10만원대</td>
+                        <td>갱신 주기에 따라 변동</td>
+                        <td>당장의 보험료 부담이 큰 분</td>
+                    </tr>
+                    <tr>
+                        <td><strong>비갱신형 (간편심사)</strong></td>
+                        <td>보험료 변동 없음, 고지 항목 간소화</td>
+                        <td>15~20만원대</td>
+                        <td>약 3,600~4,800만원</td>
+                        <td>만성질환이 있는 60대</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="table-caption">※ 위 예시는 일반적인 상황을 가정한 것이며, 실제 보험료는 가입자의 세부 조건, 보험사 상품에 따라 크게 달라질 수 있습니다.</p>
+        </section>
+
+        <!-- 섹션 3: 60세 암보험 보장 내용 및 특약 분석 -->
+        <section id="coverage-guide">
+            <h2>60세 암보험, 핵심 보장 내용 완벽 분석: 진단비와 치료비의 균형</h2>
+            <p>60세 암보험은 단순히 진단비만 많이 받는 것이 아니라, 변화하는 암 치료 환경에 맞춰 <strong>치료비 보장</strong>을 강화하는 것이 중요합니다. 최근에는 고액의 비급여 치료가 많아지면서 진단비만으로는 모든 비용을 감당하기 어려운 경우가 발생합니다.</p>
+
+            <h3>1. 필수 보장 1: 암 진단비 (고액암, 일반암, 소액암)</h3>
+            <p><strong>암 진단비</strong>는 암 확진 시 일시에 지급되는 금액으로, 암 치료 기간 동안의 생활비와 소득 감소를 보전하는 데 가장 중요한 역할을 합니다. 60세 이후에는 암 발병 시 경제활동 중단으로 인한 소득 상실이 큰 타격이 될 수 있습니다. 따라서 진단비는 충분한 금액으로 설계해야 합니다.</p>
+            <ul>
+                <li><strong>일반암 진단비:</strong> 모든 일반암(위암, 폐암, 간암 등)을 보장하는 기본 보장입니다.</li>
+                <li><strong>고액암 진단비:</strong> 치료비가 많이 드는 암(뇌암, 혈액암, 췌장암, 뼈암 등)에 대해 추가 진단비를 지급합니다. 가족력이 있다면 반드시 확인해야 합니다.</li>
+                <li><strong>소액암 진단비:</strong> 갑상선암, 기타 피부암, 대장점막내암, 경계성 종양 등 치료비가 비교적 적은 암에 대해 일반암 진단비의 10~20%만 지급하는 경우가 많습니다.</li>
+            </ul>
+
+            <h3>2. 필수 보장 2: 항암 방사선 약물 치료비 특약</h3>
+            <p>최근 암 치료는 수술보다 <strong>항암 약물 치료</strong>나 <strong>방사선 치료</strong> 비중이 높아지고 있습니다. 특히 60대는 수술에 대한 부담이 커서 항암 치료를 선택하는 경우가 많습니다.</p>
+            <ul>
+                <li><strong>표적 항암 약물 치료비:</strong> 암세포만 공격하는 표적 항암제는 치료 효과가 높지만 비용이 매우 고가입니다. 이 특약은 비급여 항목인 표적 항암제의 비용을 보장합니다.</li>
+                <li><strong>면역 항암 약물 치료비:</strong> 면역력을 높여 암세포를 공격하게 하는 면역 항암제 역시 고액의 비용이 발생합니다.</li>
+                <li><strong>세기 조절 방사선/양성자 치료비:</strong> 첨단 방사선 치료 기술로, 부작용을 줄이고 치료 효과를 높입니다. 역시 고가 비급여 항목이므로 특약 가입을 고려해야 합니다.</li>
+            </ul>
+            <p>2026년 보험 시장 동향에 따르면, 보험사들은 암 치료의 패러다임 변화에 맞춰 <strong>치료 중심 보장 설계</strong>를 강화하고 있습니다. 60대 암보험 가입 시, 진단비 외에 이러한 고액의 치료비 특약들을 꼼꼼히 챙겨야 합니다.</p>
+
+            <h3>3. 재진단암 보장의 중요성</h3>
+            <p>암은 완치 후에도 재발하거나 다른 부위로 전이될 위험이 높습니다. <strong>재진단암 보장</strong>은 암 진단 후 2년이 지나 재발하거나 다른 부위에 새로운 암이 발생했을 때 추가로 진단비를 지급하는 특약입니다. 60대는 면역력이 약해 재발 위험이 상대적으로 높기 때문에, 재진단암 보장 여부도 중요하게 고려해야 합니다.</p>
+        </section>
+
+        <!-- 섹션 4: 2026년 암보험 시장 전망 및 가입 전략 -->
+        <section id="2026-outlook">
+            <h2>2026년 60세 암보험 시장 전망: AI 기술과 초개인화</h2>
+            <p><strong>2026년</strong> 국내 보험 시장은 고령화 가속화와 기술 발전이라는 두 가지 핵심 요인에 의해 급변하고 있습니다. 특히 60대 이상의 실버 세대를 위한 암보험 시장은 다음과 같은 방향으로 진화할 것으로 예상됩니다.</p>
+            <h3>1. AI 기반 초개인화 상품 추천</h3>
+            <p>2026년 암보험 비교 플랫폼 시장은 단순히 가격을 비교하는 것을 넘어, <strong>AI 기술</strong>과 <strong>헬스케어 데이터</strong>를 결합하여 개인의 건강 상태와 위험도를 분석하는 '초개인화 추천' 시스템으로 발전하고 있습니다. 60대 가입자의 경우 과거 병력, 생활 습관, 유전적 위험 요소를 종합적으로 분석하여 최적화된 상품을 추천받을 수 있게 됩니다.</p>
+
+            <h3>2. 보장성 강화와 상품 구조 변화</h3>
+            <p>2026년에는 보험사들이 <strong>보장성 강화</strong>에 집중하며, 단기성 상품보다는 장기적인 위험 보장에 초점을 맞춘 상품들을 내놓을 전망입니다. 특히 60대를 위한 상품은 고액 치료비 특약(중입자 치료 등)과 재진단암 보장을 더욱 세분화하여 경쟁력을 높일 것으로 보입니다.</p>
+
+            <h3>3. 유병자 시장의 확대와 간편심사 다변화</h3>
+            <p>고령화로 인해 60대 이상의 유병자 인구가 증가하면서, 간편심사 상품 시장은 더욱 커질 것입니다. 보험사들은 <strong>유병자 간편심사</strong> 상품을 세분화하여 3.2.5형, 3.3.5형, 3.5.5형뿐만 아니라 다양한 조건을 가진 상품을 선보일 것으로 예상됩니다. 60세 이상의 가입자도 자신의 건강 상태에 맞는 최적의 보험료로 가입할 수 있도록 선택의 폭이 넓어지는 긍정적인 변화입니다.</p>
+        </section>
+
+        <!-- 섹션 5: 60세 암보험료 절약 팁 -->
+        <section id="cost-saving-tips">
+            <h2>60세 암보험료 절약 팁: 현명하게 가입하는 방법</h2>
+            <p>60세 암보험료는 젊은 연령층에 비해 비쌀 수 있지만, 몇 가지 팁을 활용하면 <strong>저렴한 보험료</strong>로 든든한 보장을 확보할 수 있습니다.</p>
+
+            <h3>1. 무해지환급형 상품 고려</h3>
+            <p><strong>무해지환급형</strong> 상품은 납입 기간 중 해지 시 해약환급금이 없거나 적은 대신, 일반 상품보다 보험료가 10~30% 저렴합니다. 60세 가입자는 해지 가능성이 상대적으로 낮으므로, 무해지환급형을 선택하여 보험료를 절약하는 것이 현명합니다.</p>
+
+            <h3>2. 불필요한 특약 제외 (가성비 중심 설계)</h3>
+            <p>60세 암보험은 암 진단비와 고액 항암 치료비에 집중하고, 불필요한 특약은 제외하여 <strong>보험료 부담</strong>을 줄여야 합니다. 예를 들어, 갱신형 실손보험이 있다면 중복되는 입원비나 통원비 특약은 제외하는 것이 좋습니다.</p>
+
+            <h3>3. 보험 비교사이트 활용</h3>
+            <p>단일 보험사의 상품만 확인하는 것보다 <strong>온라인 보험 비교사이트</strong>를 활용하여 여러 보험사의 상품을 동시에 비교하는 것이 중요합니다. 60대 암보험은 상품별로 보험료 차이가 크고 보장 내용도 다양하므로, 비교를 통해 자신에게 가장 적합하고 저렴한 상품을 찾는 것이 필수적입니다.</p>
+
+            <h3>4. 3대 질병 보험 통합 설계</h3>
+            <p>암보험을 갱신형으로 선택할 경우, <strong>뇌혈관질환 진단비</strong>나 <strong>허혈성심장질환 진단비</strong> 같은 3대 질병 보장을 함께 구성하는 것도 고려해야 합니다. 60대는 암뿐만 아니라 뇌졸중, 심근경색 같은 질환 위험도 높기 때문입니다.</p>
+        </section>
+
+        <!-- 섹션 6: 60세 암보험료 비교 견적 요청 폼 -->
+        <section id="quote-form">
+            <h2>60세 암보험료 무료 견적 요청 및 맞춤 설계</h2>
+            <p><strong>내 보험료는 얼마일까?</strong> 60세 암보험은 개인의 건강 상태, 성별, 과거 병력에 따라 보험료가 천차만별입니다. 아래 폼을 통해 간편하게 정보를 입력하시면, <strong>2026년 최신 데이터</strong>를 기반으로 여러 보험사의 견적을 비교해 드립니다.</p>
+            <form id="insurance-form" class="calculator-form" onsubmit="alert('견적 요청이 접수되었습니다. 곧 전문가가 연락드리겠습니다.'); return false;">
+                <h3>Step 1. 기본 정보 입력</h3>
+                <div class="form-row">
+                    <div>
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+                    </div>
+                    <div>
+                        <label for="birthdate">생년월일 (60대 가입 기준)</label>
+                        <input type="text" id="birthdate" name="birthdate" placeholder="예: 19650101" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="gender">성별</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">-- 선택 --</option>
+                            <option value="male">남성</option>
+                            <option value="female">여성</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="phone">연락처</label>
+                        <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" required>
+                    </div>
+                </div>
+
+                <h3>Step 2. 건강 상태 확인 (유병자 간편심사 여부)</h3>
+                <div class="form-row">
+                    <div>
+                        <label for="condition1">최근 3개월 이내 입원, 수술, 추가 검사 소견이 있습니까?</label>
+                        <select id="condition1" name="condition1" required>
+                            <option value="">-- 선택 --</option>
+                            <option value="no">없음</option>
+                            <option value="yes">있음</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="condition2">최근 2년 이내 입원 또는 수술을 한 적이 있습니까?</label>
+                        <select id="condition2" name="condition2" required>
+                            <option value="">-- 선택 --</option>
+                            <option value="no">없음</option>
+                            <option value="yes">있음</option>
+                        </select>
+                    </div>
+                </div>
+                <label for="condition3">최근 5년 이내 암 진단을 받았거나, 암으로 인해 입원/수술을 한 적이 있습니까?</label>
+                <select id="condition3" name="condition3" required>
+                    <option value="">-- 선택 --</option>
+                    <option value="no">없음</option>
+                    <option value="yes">있음</option>
+                </select>
+
+                <h3>Step 3. 원하는 보장 유형 선택</h3>
+                <label for="coverage-type">가입 유형</label>
+                <select id="coverage-type" name="coverage-type" required>
+                    <option value="">-- 선택 --</option>
+                    <option value="non-renewal">비갱신형 (보험료 인상 없음)</option>
+                    <option value="renewal">갱신형 (초기 보험료 저렴)</option>
+                    <option value="simplified">유병자 간편심사 (병력 있어도 가입 가능)</option>
+                </select>
+
+                <label for="coverage-amount">주요 암 진단비 희망 금액</label>
+                <input type="number" id="coverage-amount" name="coverage-amount" placeholder="예: 3000 (단위: 만원)" min="1000" max="10000" required>
+
+                <button type="submit">맞춤 보험료 견적 요청하기</button>
+            </form>
+        </section>
+
+        <!-- 섹션 7: 자주 묻는 질문 (FAQ) -->
+        <section id="faq">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+
+            <div class="faq-item">
+                <h3 class="faq-question">60세 암보험료, 왜 이렇게 비싼가요?</h3>
+                <div class="faq-answer">
+                    <p>60세 이상은 젊은 연령층에 비해 암 발병률이 높다는 통계적 위험도가 보험료에 반영됩니다. 또한, 의학 기술 발달로 암 생존율이 높아지면서 보험사가 보장해야 할 기간이 늘어나고, 고가 치료비가 증가하는 추세도 보험료 상승 요인입니다.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">비갱신형과 갱신형 중 60대에게 더 유리한 것은 무엇인가요?</h3>
+                <div class="faq-answer">
+                    <p>60대는 납입 기간이 20년으로 제한되는 비갱신형을 선택할 경우, 80세 이후의 보험료 납입 부담이 없어 유리할 수 있습니다. 반면 갱신형은 초기 보험료가 저렴하지만, 갱신 시점에 보험료가 크게 오를 수 있어 장기적인 관점에서 총 납입액을 신중하게 비교해야 합니다.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">고혈압약을 복용 중인데 암보험 가입이 가능한가요?</h3>
+                <div class="faq-answer">
+                    <p>네, 가능합니다. 최근 출시되는 <strong>유병자 간편심사 암보험</strong> 상품들은 고혈압, 당뇨와 같은 만성질환이 있어도 가입할 수 있도록 고지 항목을 간소화했습니다. 간편심사 상품은 일반 상품보다 보험료는 높지만, 60대 유병자에게는 현실적인 대안입니다.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">암보험 가입 후 언제부터 보장받을 수 있나요?</h3>
+                <div class="faq-answer">
+                    <p>대부분의 암보험은 계약일로부터 <strong>90일간의 면책기간</strong>이 있습니다. 이 기간이 지나야 보장이 시작됩니다. 또한, 가입 후 1년 또는 2년 이내 암 진단 시 진단비의 50%만 지급하는 <strong>감액기간</strong>도 있으므로, 가입 시 약관을 꼼꼼히 확인해야 합니다.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">암보험 가입 시 고액암 특약이 필요한가요?</h3>
+                <div class="faq-answer">
+                    <p>고액암(뇌암, 혈액암, 췌장암 등)은 일반암에 비해 치료비가 매우 높습니다. 가족력이 있거나, 고액의 치료비에 대한 부담이 걱정된다면 고액암 진단비 특약을 추가하는 것이 좋습니다. 다만, 보험료가 높아지므로 개인의 재정 상황을 고려하여 결정해야 합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 섹션 8: 함께 많이 찾는 키워드 -->
+        <section class="related-keywords">
+            <h2>함께 많이 찾는 키워드</h2>
+            <ul class="keyword-list">
+                <li>60대 암보험</li>
+                <li>60세 암보험료</li>
+                <li>60세 암보험 추천</li>
+                <li>부모님 암보험</li>
+                <li>실버 암보험</li>
+                <li>유병자 암보험</li>
+                <li>간편심사 암보험</li>
+                <li>비갱신 암보험</li>
+                <li>갱신형 암보험</li>
+                <li>암보험 순위</li>
+                <li>암보험 금액</li>
+                <li>암보험 가입</li>
+                <li>암보험 후기</li>
+                <li>암보험 장점</li>
+                <li>암보험 단점</li>
+                <li>암보험 차이점</li>
+                <li>암보험 비교</li>
+                <li>암보험 저렴한곳</li>
+                <li>암진단비</li>
+                <li>항암치료비</li>
+                <li>표적항암치료비</li>
+                <li>재진단암 보장</li>
+                <li>면책기간</li>
+                <li>감액기간</li>
+                <li>무해지환급형</li>
+                <li>3대 질병 보험</li>
+                <li>뇌혈관질환 진단비</li>
+                <li>허혈성심장질환 진단비</li>
+                <li>2026년 암보험</li>
+                <li>보험료 절약 팁</li>
+            </ul>
+        </section>
+
+        <!-- 섹션 9: 신뢰할 수 있는 외부 자료 및 참고 링크 -->
+        <section class="external-links">
+            <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+            <ul>
+                <li><a href="https://www.cancer.go.kr/lay1/S1T12C41/cancerinfo/cancerinfoList.do" target="_blank" rel="noopener">국가암정보센터 (암 발생 통계 및 정보)</a></li>
+                <li><a href="https://www.easylaw.go.kr/CSP/CnpClsMain.laf?csmSeq=1171&menuCode=c1074" target="_blank" rel="noopener">찾기쉬운 생활법령정보 (암환자 의료비 지원 제도)</a></li>
+                <li><a href="https://www.nhis.or.kr/nhis/index.do" target="_blank" rel="noopener">국민건강보험공단 (건강보험 및 의료비 지원 제도 안내)</a></li>
+                <li><a href="https://www.fss.or.kr/fss/main/main.do" target="_blank" rel="noopener">금융감독원 (보험 관련 소비자 유의사항 및 감독 정보)</a></li>
+                <li><a href="https://ko.wikipedia.org/wiki/%EC%95%94%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">암보험 - 위키백과 (암보험 정의 및 특징)</a></li>
+            </ul>
+        </section>
     </main>
-  </body>
-</html>
+
+    <footer>
+        <div class="container">
+            <p><strong>60세암보험 정보센터</strong> &copy; 2026 All Rights Reserved.</p>
+            <p>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이용약관</a>
+                <a href="#">문의하기</a>
+            </p>
+            <p>본 사이트는 60세 암보험 상품에 대한 비교 정보를 제공하며, 실제 가입은 각 보험사의 약관에 따릅니다. 가입 전 상품설명서 및 약관을 반드시 확인하시기 바랍니다.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for FAQ toggling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    question.closest('.faq-item').classList.toggle('active');
+                });
+            });
+        });
+    </script>
+
+
+  
